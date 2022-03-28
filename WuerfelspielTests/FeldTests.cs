@@ -25,7 +25,7 @@ namespace WuerfelspielTests
         {
             // Arrange
             int akzeptierteAugenzahl = 1;
-            Feld f = new Feld(1);
+            Feld f = new Feld(akzeptierteAugenzahl);
 
             int summeAllerAkzeptierterAugen = 0;
 
@@ -45,5 +45,32 @@ namespace WuerfelspielTests
             // Assert
             Assert.AreEqual(summeAllerAkzeptierterAugen, f.Wert);
         }
+
+        [TestMethod]
+        public void Setzen_WurfWirdEntgegengenommenUndWertKorrektBerechnet2()
+        {
+            // Arrange
+            int akzeptierteAugenzahl = 6;
+            Feld f = new Feld(akzeptierteAugenzahl);
+
+            int summeAllerAkzeptierterAugen = 0;
+
+            Wurf wurf = new Wurf(5);
+            foreach(Wuerfel w in wurf.Wuerfel)
+            {
+                w.Wuerfeln();
+                if(w.LetztesErgebnis == akzeptierteAugenzahl)
+                {
+                    summeAllerAkzeptierterAugen += w.LetztesErgebnis;
+                }
+            }
+
+            // Act
+            f.Setzen(wurf);
+
+            // Assert
+            Assert.AreEqual(summeAllerAkzeptierterAugen, f.Wert);
+        }
+
     }
 }
