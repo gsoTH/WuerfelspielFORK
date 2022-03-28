@@ -49,8 +49,10 @@
     <Reference Include="System.Core" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="FeldTests.cs" />
     <Compile Include="WuerfelTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="WurfTests.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
