@@ -8,8 +8,42 @@ namespace WuerfelspielTests
     public class FeldTests
     {
         [TestMethod]
-        public void TestMethod1()
+        public void Feld_KannErzeugtWerden()
         {
+            // Arrange
+            int akzeptierteAugenzahl = 1;
+
+            // Act
+            Feld f = new Feld(akzeptierteAugenzahl);
+            
+            // Assert 
+            Assert.AreEqual(akzeptierteAugenzahl, f.AkzeptierteAugenzahl);
+        }
+
+        [TestMethod]
+        public void Setzen_WurfWirdEntgegengenommenUndWertKorrektBerechnet()
+        {
+            // Arrange
+            int akzeptierteAugenzahl = 1;
+            Feld f = new Feld(1);
+
+            int summeAllerAkzeptierterAugen = 0;
+
+            Wurf wurf = new Wurf(5);
+            foreach(Wuerfel w in wurf.Wuerfel)
+            {
+                w.Wuerfeln();
+                if(w.LetztesErgebnis == akzeptierteAugenzahl)
+                {
+                    summeAllerAkzeptierterAugen += w.LetztesErgebnis;
+                }
+            }
+
+            // Act
+            f.Setzen(wurf);
+
+            // Assert
+            Assert.AreEqual(summeAllerAkzeptierterAugen, f.Wert);
         }
     }
 }

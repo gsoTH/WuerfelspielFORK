@@ -14,6 +14,10 @@ namespace Wuerfelspiel
         public Wurf(int anzahlWuerfel)
         {
             wuerfel = new Wuerfel[anzahlWuerfel];
+            for (int i = 0; i < anzahlWuerfel; i++)
+            {
+                wuerfel[i] = new Wuerfel();
+            }
             this.anzahlWuerfel = anzahlWuerfel;
         }
 
