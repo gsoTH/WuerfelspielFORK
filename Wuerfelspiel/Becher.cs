@@ -36,5 +36,13 @@ namespace Wuerfelspiel
                 return wuerfel;
             }
         }
+
+        public void Wuerfeln()
+        {
+            foreach(Wuerfel w in wuerfel)
+            {
+                w.Wuerfeln();
+            }
+        }
     }
 }

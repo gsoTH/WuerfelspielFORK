@@ -13,7 +13,7 @@ namespace WuerfelspielTests
         [TestMethod]
         public void Becher_KannErzeugtWerden()
         {
-            //Arrange
+            // Arrange
             int anzahlWuerfel = 5;
 
             // Act
@@ -22,6 +22,23 @@ namespace WuerfelspielTests
             // Assert
             Assert.AreEqual(anzahlWuerfel, b.AnzahlWuerfel);
            
+        }
+
+        [TestMethod]
+        public void Becher_WuerfelnErzeugtErgebnisse()
+        {
+            // Arrange
+            int anzahlWuerfel = 5;
+            Becher b = new Becher(anzahlWuerfel);
+
+            // Act
+            b.Wuerfeln();
+
+            // Assert
+            foreach(Wuerfel w in b.Wuerfel)
+            {
+                Assert.AreNotEqual(0, w.LetztesErgebnis);
+            }
         }
     }
 }
