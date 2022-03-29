@@ -44,5 +44,10 @@ namespace Wuerfelspiel
                 w.Wuerfeln();
             }
         }
+
+        public void Sichern(int wuerfelNummer)
+        {
+            wuerfel[wuerfelNummer].Gesichert = true;
+        }
     }
 }

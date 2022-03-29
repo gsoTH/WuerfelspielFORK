@@ -25,7 +25,7 @@ namespace WuerfelspielTests
         }
 
         [TestMethod]
-        public void Becher_WuerfelnErzeugtErgebnisse()
+        public void Wuerfeln_ErzeugtErgebnisse()
         {
             // Arrange
             int anzahlWuerfel = 5;
@@ -39,6 +39,28 @@ namespace WuerfelspielTests
             {
                 Assert.AreNotEqual(0, w.LetztesErgebnis);
             }
+        }
+
+        [TestMethod]
+        public void Sichern_VerhindertDassWuerfelwerteGeaendertWerden()
+        {
+            // Arrange
+            int anzahlWuerfel = 5;
+            Becher b = new Becher(anzahlWuerfel);
+            b.Wuerfeln();
+
+            int wuerfelNummer = anzahlWuerfel-1;
+            int gesichertertWert = b.Wuerfel[wuerfelNummer].LetztesErgebnis;
+            
+
+            // Act
+            b.Sichern(wuerfelNummer);
+            b.Wuerfeln();
+            b.Wuerfeln();
+            b.Wuerfeln(); // Senkt die Wahrscheinlichkeit, zufällig den gleichen Wert zu würfeln.
+
+            // Assert
+            Assert.AreEqual(gesichertertWert, b.Wuerfel[wuerfelNummer].LetztesErgebnis);
         }
     }
 }

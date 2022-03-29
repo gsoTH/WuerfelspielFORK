@@ -74,5 +74,18 @@ namespace WuerfelspielTests
              // Act
             Wuerfel w = new Wuerfel(-1);
         }
+
+        [TestMethod]
+        public void Gesichert_KannVeraendertWerden()
+        {
+            // Arrange
+            Wuerfel w = new Wuerfel();
+
+            // Act
+            w.Gesichert = true;
+
+            // Assert
+            Assert.IsTrue(w.Gesichert);
+        }
     }
 }

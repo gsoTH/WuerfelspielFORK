@@ -7,6 +7,7 @@ namespace Wuerfelspiel
         private int anzahlSeiten;
         private Random rnd;
         private int letztesErgebnis;
+        private bool gesichert;
 
         public Wuerfel():this(6)
         {
@@ -39,9 +40,25 @@ namespace Wuerfelspiel
             }
         }
 
+        public bool Gesichert
+        {
+            get
+            {
+                return gesichert;
+            }
+
+            set
+            {
+                gesichert = value;
+            }
+        }
+
         public int Wuerfeln()
         {
-            letztesErgebnis = rnd.Next(1, anzahlSeiten);
+            if(gesichert == false)
+            {
+                letztesErgebnis = rnd.Next(1, anzahlSeiten);
+            }
             return letztesErgebnis;
         }
     }
