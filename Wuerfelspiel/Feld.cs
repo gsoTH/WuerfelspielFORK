@@ -24,9 +24,9 @@ namespace Wuerfelspiel
             }
         }
 
-        public void Setzen(Wurf wurf)
+        public void Setzen(Wuerfel[] wuerfel)
         {
-            foreach(Wuerfel w in wurf.Wuerfel)
+            foreach(Wuerfel w in wuerfel)
             {
                 if(w.LetztesErgebnis == akzeptierteAugenzahl)
                 {

@@ -7,21 +7,20 @@ using Wuerfelspiel;
 namespace WuerfelspielTests
 {
     [TestClass]
-    public class WurfTests
+    public class BecherTests
     {
         
         [TestMethod]
-        public void Wurf_KannErzeugtWerden()
+        public void Becher_KannErzeugtWerden()
         {
             //Arrange
             int anzahlWuerfel = 5;
 
             // Act
-            Wurf w = new Wurf(anzahlWuerfel);
+            Becher b = new Becher(anzahlWuerfel);
 
             // Assert
-            Assert.AreEqual(anzahlWuerfel, w.AnzahlWuerfel);
-            Assert.IsInstanceOfType(w.Wuerfel,typeof(Array));
+            Assert.AreEqual(anzahlWuerfel, b.AnzahlWuerfel);
            
         }
     }

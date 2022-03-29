@@ -29,8 +29,8 @@ namespace WuerfelspielTests
 
             int summeAllerAkzeptierterAugen = 0;
 
-            Wurf wurf = new Wurf(5);
-            foreach(Wuerfel w in wurf.Wuerfel)
+            Becher becher = new Becher(5);
+            foreach(Wuerfel w in becher.Wuerfel)
             {
                 w.Wuerfeln();
                 if(w.LetztesErgebnis == akzeptierteAugenzahl)
@@ -40,7 +40,7 @@ namespace WuerfelspielTests
             }
 
             // Act
-            f.Setzen(wurf);
+            f.Setzen(becher.Wuerfel);
 
             // Assert
             Assert.AreEqual(summeAllerAkzeptierterAugen, f.Wert);
@@ -55,8 +55,8 @@ namespace WuerfelspielTests
 
             int summeAllerAkzeptierterAugen = 0;
 
-            Wurf wurf = new Wurf(5);
-            foreach(Wuerfel w in wurf.Wuerfel)
+            Becher becher = new Becher(5);
+            foreach(Wuerfel w in becher.Wuerfel)
             {
                 w.Wuerfeln();
                 if(w.LetztesErgebnis == akzeptierteAugenzahl)
@@ -66,7 +66,7 @@ namespace WuerfelspielTests
             }
 
             // Act
-            f.Setzen(wurf);
+            f.Setzen(becher.Wuerfel);
 
             // Assert
             Assert.AreEqual(summeAllerAkzeptierterAugen, f.Wert);

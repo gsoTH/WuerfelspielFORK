@@ -6,12 +6,12 @@ using System.Threading.Tasks;
 
 namespace Wuerfelspiel
 {
-    public class Wurf
+    public class Becher
     {
         private int anzahlWuerfel;
         private Wuerfel[] wuerfel;
 
-        public Wurf(int anzahlWuerfel)
+        public Becher(int anzahlWuerfel)
         {
             wuerfel = new Wuerfel[anzahlWuerfel];
             for (int i = 0; i < anzahlWuerfel; i++)

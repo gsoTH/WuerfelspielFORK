@@ -52,7 +52,7 @@
     <Compile Include="FeldTests.cs" />
     <Compile Include="WuerfelTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="WurfTests.cs" />
+    <Compile Include="BecherTests.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
