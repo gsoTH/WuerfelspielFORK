@@ -11,7 +11,7 @@ namespace Wuerfelspiel
 
         public Wuerfel():this(6)
         {
-            //anzahlSeiten = 6;
+
         }
 
         public Wuerfel(int anzahlSeiten)
@@ -20,8 +20,11 @@ namespace Wuerfelspiel
             {
                 throw new ArgumentOutOfRangeException("Negative Werte nicht möglicht.");
             }
+
             rnd = new Random();
             this.anzahlSeiten = anzahlSeiten;
+            letztesErgebnis = 0;
+            gesichert = false;
         }
 
         public int AnzahlSeiten
@@ -60,6 +63,11 @@ namespace Wuerfelspiel
                 letztesErgebnis = rnd.Next(1, anzahlSeiten);
             }
             return letztesErgebnis;
+        }
+
+        public void SicherungUmschalten()
+        {
+            gesichert = !gesichert;
         }
     }
 }

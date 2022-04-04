@@ -39,12 +39,26 @@ namespace WuerfelspielTests
         }
 
         [TestMethod]
+        public void LetztesErgebnis_HatErgebnisVomLetztenWuerfeln()
+        {
+            // Arrange
+            Wuerfel w = new Wuerfel();
+
+            // Act
+            int ergebnis = w.Wuerfeln();
+
+            // Assert
+            Assert.AreEqual(ergebnis, w.LetztesErgebnis);
+        }
+
+        [TestMethod]
         public void Wuerfeln_ErzeugtErgebnis()
         {
             // Arrange
             int obereGrenze = 6;
             int untereGrenze = 1;
             Wuerfel w = new Wuerfel(obereGrenze);
+            
             int anzahlVersuche = 100;
             int[] ergebnisse = new int[anzahlVersuche];
 
@@ -59,19 +73,6 @@ namespace WuerfelspielTests
             Assert.IsTrue(ergebnisse.Max()<= obereGrenze);
             Assert.IsTrue(ergebnisse.Min()>= untereGrenze);
 
-        }
-
-        [TestMethod]
-        public void LetztesErgebnis_HatErgebnisVomLetztenWuerfeln()
-        {
-            // Arrange
-            Wuerfel w = new Wuerfel();
-
-            // Act
-            int ergebnis = w.Wuerfeln();
-
-            // Assert
-            Assert.AreEqual(ergebnis, w.LetztesErgebnis);
         }
 
         [TestMethod]
@@ -94,5 +95,28 @@ namespace WuerfelspielTests
             // Assert
             Assert.IsTrue(w.Gesichert);
         }
+
+        [TestMethod]
+        public void SicherungUmschalten_AendertGesichert()
+        {
+            // Arrange
+            Wuerfel w = new Wuerfel();
+
+            // Act
+            bool start = w.Gesichert;
+            
+            w.SicherungUmschalten();
+            bool mitte = w.Gesichert;
+
+            w.SicherungUmschalten();
+            bool ende = w.Gesichert;
+            
+
+            // Assert
+            Assert.IsFalse(start);
+            Assert.IsTrue(mitte);
+            Assert.IsFalse(ende);
+        }
+
     }
 }
