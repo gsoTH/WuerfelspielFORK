@@ -60,7 +60,7 @@ namespace Wuerfelspiel
         {
             if(gesichert == false)
             {
-                letztesErgebnis = rnd.Next(1, anzahlSeiten);
+                letztesErgebnis = rnd.Next(1, anzahlSeiten+1);
             }
             return letztesErgebnis;
         }
