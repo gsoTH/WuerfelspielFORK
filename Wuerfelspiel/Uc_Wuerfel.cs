@@ -6,25 +6,24 @@ namespace Wuerfelspiel
     public partial class Uc_Wuerfel : UserControl
     {
         int wert = 0;
+        Wuerfel w;
         
         public Uc_Wuerfel()
         {
             InitializeComponent();
+            w = new Wuerfel();
         }
 
-        public int Wert
+        public Uc_Wuerfel(Wuerfel wuerfel):this()
         {
-            set
-            {
-                this.wert = value;
-            }
+            w = wuerfel;
         }
 
         private void Uc_Wuerfel_Paint(object sender, PaintEventArgs e)
         {
             //Hilfsvariablen
             Graphics g = e.Graphics;
-            int h = this.Size.Height;
+            int h = this.Size.Height; // NICHT ClientSize!
             int w = this.Size.Width;
 
             Brush b = new SolidBrush(Color.Black);            
@@ -104,6 +103,17 @@ namespace Wuerfelspiel
             }
 
 
+        }
+
+        private void Uc_Wuerfel_Click(object sender, System.EventArgs e)
+        {
+            w.SicherungUmschalten();
+        }
+
+        private void Uc_Wuerfel_DoubleClick(object sender, System.EventArgs e)
+        {
+            wert = w.Wuerfeln();
+            Refresh();
         }
     }
 }

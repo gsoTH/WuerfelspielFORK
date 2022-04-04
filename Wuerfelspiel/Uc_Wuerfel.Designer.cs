@@ -37,7 +37,9 @@
             this.BackColor = System.Drawing.SystemColors.Window;
             this.Name = "Uc_Wuerfel";
             this.Size = new System.Drawing.Size(174, 170);
+            this.Click += new System.EventHandler(this.Uc_Wuerfel_Click);
             this.Paint += new System.Windows.Forms.PaintEventHandler(this.Uc_Wuerfel_Paint);
+            this.DoubleClick += new System.EventHandler(this.Uc_Wuerfel_DoubleClick);
             this.ResumeLayout(false);
 
         }
