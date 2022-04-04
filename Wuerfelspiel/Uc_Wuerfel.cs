@@ -27,17 +27,22 @@ namespace Wuerfelspiel
             int h = this.Size.Height;
             int w = this.Size.Width;
 
+            Brush b = new SolidBrush(Color.Black);            
+
+            // Wird später genutzt, um Zahlen > 9 darzustellen.
+            Rectangle text = new Rectangle(0,0,w,h);
+
             // Hier wird ein "Würfel" in mehrere Quadrate eingeteilt, um dort
             // Punkte darzustellen. Je nach this.wert werden andere Quadrate ausgefüllt.
-            //+---+---+---+
-            //| 0 | 1 | 2 |
-            //+---+---+---+
-            //| 3 | 4 | 5 |
-            //+---+---+---+
-            //| 6 | 7 | 8 |
-            //+---+---+---+
-
-            Brush b = new SolidBrush(Color.Black);            
+            // 
+            //   j -->
+            //  i   +---+---+---+
+            //  |   | 0 | 1 | 2 |
+            //  V   +---+---+---+
+            //      | 3 | 4 | 5 |
+            //      +---+---+---+
+            //      | 6 | 7 | 8 |
+            //      +---+---+---+
             Rectangle[] rects = new Rectangle[9];
             
             int anteilW = w/3;
