@@ -72,5 +72,19 @@ namespace WuerfelspielTests
             Assert.AreEqual(summeAllerAkzeptierterAugen, f.Wert);
         }
 
+        [TestMethod]
+        [ExpectedException(typeof(ArgumentException))]
+        public void Setzen_NochmalSetzenUnmoeglich()
+        {
+            // Arrange
+            int akzeptierteAugenzahl = 6;
+            Feld f = new Feld(akzeptierteAugenzahl);
+            Becher becher = new Becher(5);
+
+            // Act
+            f.Setzen(becher.Wuerfel);
+            f.Setzen(becher.Wuerfel);
+        }
+
     }
 }

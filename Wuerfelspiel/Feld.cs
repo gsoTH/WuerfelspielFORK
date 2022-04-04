@@ -10,10 +10,12 @@ namespace Wuerfelspiel
     {
         private int akzeptierteAugenzahl;
         private int wert;
+        private bool gesetzt;
 
         public Feld(int akzeptierteAugenzahl)
         {
             this.akzeptierteAugenzahl = akzeptierteAugenzahl;
+            gesetzt = false;
         }
 
         public int AkzeptierteAugenzahl
@@ -26,12 +28,17 @@ namespace Wuerfelspiel
 
         public void Setzen(Wuerfel[] wuerfel)
         {
+            if (gesetzt)
+            {
+                throw new ArgumentException("Nochmaliges Setzten nicht erlaubt.");
+            }
             foreach(Wuerfel w in wuerfel)
             {
                 if(w.LetztesErgebnis == akzeptierteAugenzahl)
                 {
                     wert+=akzeptierteAugenzahl;
                 }
+                gesetzt = true;
             }
         }
 

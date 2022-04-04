@@ -9,6 +9,23 @@ namespace WuerfelspielTests
     public class WuerfelTests
     {
         [TestMethod]
+        public void Wuerfel_OhneParameterWirdEinStandardwuerfelErzeugt()
+        {
+            // Arrange
+            int anzahlSeiten = 6;
+            int letztesErgebnis = 0;
+            bool gesichert = false;
+
+            // Act
+            Wuerfel w = new Wuerfel();
+
+            // Assert
+            Assert.AreEqual(anzahlSeiten, w.AnzahlSeiten);
+            Assert.AreEqual(letztesErgebnis, w.LetztesErgebnis);
+            Assert.AreEqual(gesichert, w.Gesichert);
+        }
+
+        [TestMethod]
         public void Wuerfel_AnzahlSeitenKannAngegebenWerden()
         {
             // Arrange
@@ -19,16 +36,6 @@ namespace WuerfelspielTests
 
             // Assert
             Assert.AreEqual(anzahlSeiten, w.AnzahlSeiten);
-        }
-
-        [TestMethod]
-        public void Wuerfel_OhneParameterWirdEinStandardwuerfelErzeugt()
-        {
-            // Act
-            Wuerfel w = new Wuerfel();
-
-            // Assert
-            Assert.AreEqual(6, w.AnzahlSeiten);
         }
 
         [TestMethod]
