@@ -1,7 +1,9 @@
 ﻿using System;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
+using Microsoft.VisualStudio.TestTools.UnitTesting.Logging;
 using Wuerfelspiel;
 using System.Linq;
+using System.Collections.Generic;
 
 namespace WuerfelspielTests
 {
@@ -74,6 +76,7 @@ namespace WuerfelspielTests
             Assert.IsTrue(ergebnisse.Min() == untereGrenze);
         }
 
+
         [TestMethod]
         [ExpectedException(typeof(ArgumentOutOfRangeException))]
         public void Wuerfel_NegativeAnzahlSeitenUnmoeglich()
@@ -117,5 +120,38 @@ namespace WuerfelspielTests
             Assert.IsFalse(ende);
         }
 
+        [TestMethod]
+        public void Wuerfeln_ErgebnisIstGleichverteilt()
+        {
+            // Arrange
+            int obereGrenze = 6;
+            Wuerfel w = new Wuerfel(obereGrenze);
+
+            int anzahlVersuche = 1000000;
+            int erlaubteAbweichung = anzahlVersuche / 100; 
+
+            List<int>[] ziffern = new List<int>[obereGrenze];
+            for (int i = 0; i < ziffern.Length; i++)
+            {
+                // Listen müssen initalisiert werden.
+                ziffern[i] = new List<int>();
+            }
+
+            // Act
+            for (int i = 0; i < anzahlVersuche; i++)
+            {
+                int ergebnis = w.Wuerfeln();
+                // Eintrag in Liste mit Index der Ziffer einfügen
+                // Bsp: Ergebnis = 1 --> muss in erste Liste, also Index = 0 eingefügt werden.
+                ziffern[ergebnis - 1].Add(i);
+            }
+
+            // Assert
+            for (int i = 1; i < ziffern.Length; i++)
+            {
+                int abweichung = Math.Abs(ziffern[i-1].Count() - ziffern[i].Count());
+                Assert.IsTrue( abweichung < erlaubteAbweichung);
+            }
+        }
     }
 }
