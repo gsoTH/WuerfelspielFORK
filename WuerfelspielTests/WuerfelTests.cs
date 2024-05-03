@@ -70,9 +70,8 @@ namespace WuerfelspielTests
             }
 
             // Assert
-            Assert.IsTrue(ergebnisse.Max()<= obereGrenze);
-            Assert.IsTrue(ergebnisse.Min()>= untereGrenze);
-
+            Assert.IsTrue(ergebnisse.Max() == obereGrenze);
+            Assert.IsTrue(ergebnisse.Min() == untereGrenze);
         }
 
         [TestMethod]
